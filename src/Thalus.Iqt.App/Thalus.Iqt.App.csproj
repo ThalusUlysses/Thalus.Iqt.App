@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>ThalusUlysses</Authors>
+    <Product>Thalus Ulysses Installation Qualification Test</Product>
+    <Description>Creates an installation qualification reference file based on passed folder / file structure. Compares an installation qualification reference file with the current passed folder / file structure.</Description>
+    <Copyright>ThalusUlysses</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Thalus.Iqt.Core\Thalus.Iqt.Core.csproj" />
+  </ItemGroup>
+
+</Project>

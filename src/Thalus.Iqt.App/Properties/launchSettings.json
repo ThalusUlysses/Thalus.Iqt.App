@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Thalus.Iqt.App": {
+      "commandName": "Project",
+      "commandLineArgs": "compare --directory C:\\_\\repo\\Nucleus6\\src\\Thalus.Iqt.App\\bin\\Debug\\netcoreapp3.1 --reference C:\\_\\repo\\Nucleus6\\src\\Thalus.Iqt.App\\bin\\Debug\\netcoreapp3.1\\IqtOutfile.json"
+    }
+  }
+}

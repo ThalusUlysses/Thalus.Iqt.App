@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>ThalusUlysses</Authors>
+    <Company>ThalusUlysses</Company>
+    <Product>Thalus.Iqt.Core</Product>
+    <Description>Installation Qualification Test tooling. Creation of reference files and their comparison</Description>
+    <Copyright>ThalusUlysses</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Thalus.Contracts\Thalus.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
