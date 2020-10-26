@@ -78,16 +78,16 @@ Iqt exited with exitcode:0
       "Excluded": false
     },
     {
-      "QualifiedName": "<yourPath>Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.exe_Thalus Ulysses Installation Qualification Test_1.0.0_1.0.0.0_70061700",
+      "QualifiedName": "<yourPath>\\Thalus.Iqt.App.exe_Thalus Ulysses Installation Qualification Test_1.0.0_1.0.0.0_70061700",
       "Name": "Thalus.Iqt.App.exe",
-      "FullName": "<yourPath>Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.exe",
+      "FullName": "<yourPath>\\Thalus.Iqt.App.exe",
       "Hash": "85-AF-8C-F7-50-2D-CC-28-59-80-7C-9A-95-26-26-AB-40-DE-7C-E8",
       "Excluded": false
     },
     {
-      "QualifiedName": "<yourPath>Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.pdb_26.10.2020 08:57:34_3656",
+      "QualifiedName": "<yourPath>\\Thalus.Iqt.App.pdb_26.10.2020 08:57:34_3656",
       "Name": "Thalus.Iqt.App.pdb",
-      "FullName": "<yourPath>Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.pdb",
+      "FullName": "<yourPath>\\Thalus.Iqt.App.pdb",
       "Hash": "B4-F2-88-CF-40-DD-AE-4E-8C-C8-F9-21-D5-CA-D7-CF-47-4D-CE-27",
       "Excluded": false
     }
@@ -159,9 +159,9 @@ Iqt exited with exitcode:402
   "ExpectedButNotThere": [
     {
       "Expected": {
-        "QualifiedName": "<yourPath>Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.pdb_26.10.2020 08:57:34_3656",
+        "QualifiedName": "<yourPath>\\Thalus.Iqt.App.pdb_26.10.2020 08:57:34_3656",
         "Name": "Thalus.Iqt.App.pdb",
-        "FullName": "C:\\_\\repo\\Thalus.Iqt.App\\src\\Thalus.Iqt.App\\bin\\Release\\netcoreapp3.1\\win-x64\\publish\\Thalus.Iqt.App.pdb",
+        "FullName": "<yourPath>\\Thalus.Iqt.App.pdb",
         "Hash": "B4-F2-88-CF-40-DD-AE-4E-8C-C8-F9-21-D5-CA-D7-CF-47-4D-CE-27",
         "Excluded": false
       },
