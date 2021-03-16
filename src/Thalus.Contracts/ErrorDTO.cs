@@ -16,6 +16,9 @@ namespace Thalus.Contracts
         public Type ExceptionType { get { if (IsException) { return Data.GetType(); } return null; } }
 
         public object Data { get; set; }
+
+        public Exception Exception => (Exception)Data;
+
         public TType GetData<TType>() where TType : class
         {
             if (Data == null)

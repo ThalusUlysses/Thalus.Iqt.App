@@ -1,10 +1,10 @@
 ﻿namespace Thalus.Iqt.Core
 {
-    public class IqtIdentityResultDTO
+    public class IqtIdentityResultDTO : IIqtIdentityResultDTO
     {
-        public IqtIdentityDTO Expected { get; set; }
+        public IIqtIdentityDTO Expected { get; set; }
 
-        public IqtIdentityDTO Current { get; set; }
+        public IIqtIdentityDTO Current { get; set; }
 
         public string Text { get; set; }
     }

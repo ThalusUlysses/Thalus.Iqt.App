@@ -5,9 +5,9 @@ using Thalus.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class IqtIdentityCompare
+    class IqtIdentityCompare : IIqtIdentityCompare
     {
-        public IResult CompareIdentities(IqtIdentityDTO[] expected, IqtIdentityDTO[] current)
+        public IResult CompareIdentities(IIqtIdentityDTO[] expected, IIqtIdentityDTO[] current)
         {
             IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
 
@@ -17,9 +17,9 @@ namespace Thalus.Iqt.Core
 
         }
 
-        public IResult CompareIdentity(IqtIdentityDTO expected, IqtIdentityDTO current)
+        public IResult CompareIdentity(IIqtIdentityDTO expected, IIqtIdentityDTO current)
         {
-            IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();           
+            IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
 
             CompareIdentity(expected, current, set);
 
@@ -27,26 +27,26 @@ namespace Thalus.Iqt.Core
 
         }
 
-        public IResult CompareIdentitySet(IqtIdentitySetDTO expected, IqtIdentitySetDTO current)
+        public IResult CompareIdentitySet(IIqtIdentitySetDTO expected, IIqtIdentitySetDTO current)
         {
 
-            IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();            
+            IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
 
             CompareIdentities(expected.Identities, current.Identities, set);
 
             return GetResult(set);
         }
 
-        private void CompareIdentities(IqtIdentityDTO[] expected, IqtIdentityDTO[] current, IqtIdentityResultSetDTO set)
+        private void CompareIdentities(IIqtIdentityDTO[] expected, IIqtIdentityDTO[] current, IIqtIdentityResultSetDTO set)
         {
-            List<IqtIdentityDTO> idents = new List<IqtIdentityDTO>(current);
+            List<IIqtIdentityDTO> idents = new List<IIqtIdentityDTO>(current);
             foreach (var item in expected)
             {
                 var k = current.FirstOrDefault(i => i.FullName == item.FullName);
 
                 if (k == null)
                 {
-                    set.ExpectedButNotThere.Add(new IqtIdentityResultDTO { Current = null, Expected = item, Text = "Identity was expected but was not found" });
+                    set.AddExpectedButNotThere(new IqtIdentityResultDTO { Current = null, Expected = item, Text = "Identity was expected but was not found" });
                     continue;
                 }
 
@@ -56,7 +56,7 @@ namespace Thalus.Iqt.Core
 
             foreach (var item in idents)
             {
-                set.ThereButNotExpected.Add(new IqtIdentityResultDTO { Current = item, Expected = null, Text = "Identity was found but was not expected" });
+                set.AddThereButNotExpected(new IqtIdentityResultDTO { Current = item, Expected = null, Text = "Identity was found but was not expected" });
             }
         }
 
@@ -76,21 +76,21 @@ namespace Thalus.Iqt.Core
             return set.ExcludedButNotThere.Any() || set.ExpectedButNotThere.Any() || set.ThereButExcluded.Any() || set.ThereButNotExpected.Any() || set.ThereButWrongHash.Any();
         }
 
-        private void CompareIdentity(IqtIdentityDTO expected, IqtIdentityDTO current, IqtIdentityResultSetDTO set)
+        private void CompareIdentity(IIqtIdentityDTO expected, IIqtIdentityDTO current, IIqtIdentityResultSetDTO set)
         {
             if (expected.Excluded && !current.Excluded)
             {
-                set.ThereButExcluded.Add(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity was expected as excluded but was not marked excluded" });
+                set.AddThereButExcluded(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity was expected as excluded but was not marked excluded" });
             }
 
             if (!expected.Excluded && current.Excluded)
             {
-                set.ExpectedButNotThere.Add(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity was expected not excluded but was marked excluded" });
+                set.AddExpectedButNotThere(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity was expected not excluded but was marked excluded" });
             }
 
             if (!expected.Hash.Equals(current.Hash, StringComparison.InvariantCulture))
             {
-                set.ThereButWrongHash.Add(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity found in both but hash is different." });
+                set.AddThereButWrongHash(new IqtIdentityResultDTO { Current = current, Expected = expected, Text = "Identity found in both but hash is different." });
             }
         }
     }

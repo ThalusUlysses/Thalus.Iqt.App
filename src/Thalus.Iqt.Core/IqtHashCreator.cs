@@ -5,7 +5,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class IqtHashCreator : IIqtHashCreator
+    class IqtHashCreator : IIqtHashCreator
     {
         HashAlgorithm _alg;
         public IqtHashCreator(HashAlgorithm alg)

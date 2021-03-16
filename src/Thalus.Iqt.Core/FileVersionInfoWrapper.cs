@@ -3,7 +3,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class FileVersionInfoWrapper : IFileVersionInfo
+    class FileVersionInfoWrapper : IFileVersionInfo
     {
         FileVersionInfo _fi;
 

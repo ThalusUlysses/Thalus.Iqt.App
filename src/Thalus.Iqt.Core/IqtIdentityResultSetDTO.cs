@@ -1,26 +1,43 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Thalus.Iqt.Core
 {
-    public class IqtIdentityResultSetDTO
-    {
-        public IqtIdentityResultSetDTO()
+    public class IqtIdentityResultSetDTO : IIqtIdentityResultSetDTO
+    { 
+        public void AddExpectedButNotThere(IqtIdentityResultDTO dto)
         {
-            ExcludedButNotThere = new List<IqtIdentityResultDTO>();
-            ThereButWrongHash = new List<IqtIdentityResultDTO>();
-            ThereButNotExpected = new List<IqtIdentityResultDTO>();
-            ThereButExcluded = new List<IqtIdentityResultDTO>();
-            ExpectedButNotThere = new List<IqtIdentityResultDTO>();
+            ExpectedButNotThere.Add(dto);
+        }
+
+        public void AddExcludedButNotThere(IqtIdentityResultDTO dto)
+        {
+            ExcludedButNotThere.Add(dto);
+        }
+
+        public void AddThereButExcluded(IqtIdentityResultDTO dto)
+        {
+            ThereButExcluded.Add(dto);
+        }
+
+        public void AddThereButNotExpected(IqtIdentityResultDTO dto)
+        {
+            ThereButNotExpected.Add(dto);
+        }
+
+        public void AddThereButWrongHash(IqtIdentityResultDTO dto)
+        {
+            ThereButWrongHash.Add(dto);
         }
 
         public List<IqtIdentityResultDTO> ExpectedButNotThere { get; set; }
-        
+
         public List<IqtIdentityResultDTO> ExcludedButNotThere { get; set; }
 
         public List<IqtIdentityResultDTO> ThereButExcluded { get; set; }
 
         public List<IqtIdentityResultDTO> ThereButNotExpected { get; set; }
 
-        public List<IqtIdentityResultDTO> ThereButWrongHash { get; set; }
+        public List<IqtIdentityResultDTO> ThereButWrongHash { get; set; }       
     }
 }

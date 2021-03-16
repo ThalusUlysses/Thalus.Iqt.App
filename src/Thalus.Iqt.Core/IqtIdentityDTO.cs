@@ -1,6 +1,6 @@
 ﻿namespace Thalus.Iqt.Core
 {
-    public class IqtIdentityDTO
+    public class IqtIdentityDTO : IIqtIdentityDTO
     {
         public string QualifiedName { get; set; }
 
@@ -9,6 +9,6 @@
 
         public string Hash { get; set; }
 
-       public bool Excluded { get; set; }
+        public bool Excluded { get; set; }
     }
 }

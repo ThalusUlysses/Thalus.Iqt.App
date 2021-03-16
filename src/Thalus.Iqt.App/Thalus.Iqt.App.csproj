@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Thalus.Contracts\Thalus.Contracts.csproj" />
     <ProjectReference Include="..\Thalus.Iqt.Core\Thalus.Iqt.Core.csproj" />
   </ItemGroup>
 

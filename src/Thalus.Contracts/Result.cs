@@ -62,6 +62,23 @@ namespace Thalus.Contracts
             };
         }
 
+        public static IResult<TType> Exception<TType>(Exception data, string invariant, string localized = "Result failed", string locale = "en-US")
+        {
+            return new Result<TType>
+            {
+                Code = 500,
+                Text = new TextDTO
+                {
+                    Encoding = nameof(Encoding.UTF8),
+                    Locale = locale,
+                    Invariant = invariant,
+                    Localized = localized
+                },
+                Data = data,
+                Success = false
+            };
+        }
+
         public static IResult Fail(int code, IText text = null, object data = null)
         {
             return Fail(code, text?.Invariant, text?.Localized, text?.Locale, data);
@@ -90,6 +107,11 @@ namespace Thalus.Contracts
             return Ok(code, text?.Invariant, text?.Localized, text?.Locale, data);
         }
 
+        public static IResult<TType> Ok<TType>(TType data,IText text=null, int code = StatusCode.OK)
+        {
+            return Ok<TType>(code, text?.Invariant, text?.Localized, text?.Locale, data);
+        }
+
         public static IResult Ok(int code = StatusCode.OK, string invariant = "Result successful", string localized = "Result successful", string locale = "en-US", object data = null)
         {
             return new Result
@@ -106,6 +128,50 @@ namespace Thalus.Contracts
                 Data = data,
                 Success = true
             };
+        }
+
+        public static IResult<TType> Ok<TType>(int code = StatusCode.OK, string invariant = "Result successful", string localized = "Result successful", string locale = "en-US", object data = null)
+        {
+            return new Result<TType>
+            {
+                Code = code,
+                Text = new TextDTO
+                {
+                    Encoding = nameof(Encoding.UTF8),
+                    Locale = locale,
+                    Invariant = invariant,
+                    Localized = localized
+                }
+                ,
+                Data = data,
+                Success = true
+            };
+        }
+    }
+
+
+    public class Result<TType> : Result, IResult<TType>
+    {
+        public TType ResultSet 
+        {
+            get 
+            {
+                return Success? (TType) Data : default(TType) ; 
+            } 
+        }
+
+        public void ThrowIfException()
+        {
+            if (Success)
+            {
+                return;
+            }
+
+            var error = this.GetError();
+            if (error.IsException)
+            {
+                throw error.Exception;
+            }
         }
     }
 }

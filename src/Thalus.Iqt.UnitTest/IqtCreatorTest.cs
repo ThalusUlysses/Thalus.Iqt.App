@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text.Unicode;
 using Thalus.Iqt.Core;
+using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.UnitTest
 {
@@ -12,7 +13,13 @@ namespace Thalus.Iqt.UnitTest
         [Test(Author = "ThalusUlysses", Description = "Checks")]
         public void CreateIdentitiesTest()
         {
-            IqtIdentityCreator c = new IqtIdentityCreator(new FileAccessMock(false), new IqtIdentityFactory(new IqtHashCreator(SHA1.Create())));
+            var ioC = new IqtIoc();
+            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+
+            var rCreator = ioC.Get<IIqtIdentityCreator>();
+            rCreator.ThrowIfException();
+
+            IIqtIdentityCreator c = rCreator.ResultSet;
             var k = c.CreateFrom(null, "c:/klaus");
             
             Assert.AreEqual(2, k.Length);
@@ -59,7 +66,13 @@ namespace Thalus.Iqt.UnitTest
 
         public void CreateIdentitiesExcludeDirectoryTest(IqtExcludesDTO ex)
         {
-            IqtIdentityCreator c = new IqtIdentityCreator(new FileAccessMock(false), new IqtIdentityFactory(new IqtHashCreator(SHA1.Create())));
+            var ioC = new IqtIoc();
+            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+
+            var rCreator = ioC.Get<IIqtIdentityCreator>();
+            rCreator.ThrowIfException();
+
+            IIqtIdentityCreator c = rCreator.ResultSet;
             var k = c.CreateFrom(ex, "c:/klaus");
 
             var item = k.First(i => i.FullName.Equals("c:/klaus"));
@@ -79,7 +92,13 @@ namespace Thalus.Iqt.UnitTest
 
         public void CreateIdentitiesExcludeAllTest(IqtExcludesDTO ex)
         {
-            IqtIdentityCreator c = new IqtIdentityCreator(new FileAccessMock(false), new IqtIdentityFactory(new IqtHashCreator(SHA1.Create())));
+            var ioC = new IqtIoc();
+            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+
+            var rCreator = ioC.Get<IIqtIdentityCreator>();
+            rCreator.ThrowIfException();
+
+            IIqtIdentityCreator c = rCreator.ResultSet;
             var k = c.CreateFrom(ex, "c:/klaus");
 
             Assert.AreEqual(2, k.Length);

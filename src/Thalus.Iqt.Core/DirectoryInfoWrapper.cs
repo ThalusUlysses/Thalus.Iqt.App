@@ -4,7 +4,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class DirectoryInfoWrapper : IDirectoryInfo
+    class DirectoryInfoWrapper : IDirectoryInfo
     {
         DirectoryInfo _di;
 

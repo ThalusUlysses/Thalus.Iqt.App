@@ -125,7 +125,14 @@ namespace Thalus.Iqt.App
         {
             try
             {
-                IqtIdentityCreator creator = new IqtIdentityCreator(new FileAccess(), new IqtIdentityFactory(new IqtHashCreator(SHA1.Create())));
+                IPoorMansIoC ioc = new IqtIoc();
+
+
+
+                var rCreator = ioc.Get<IIqtIdentityCreator>();
+                rCreator.ThrowIfException();
+                var creator = rCreator.ResultSet;
+
                 var excludes = CreateExcludesFrom(options);
 
                 var current = creator.CreateFrom(excludes, options.Directories.ToArray());
@@ -165,13 +172,20 @@ namespace Thalus.Iqt.App
                     return;
                 }
 
-                IqtIdentityCreator creator = new IqtIdentityCreator(new FileAccess(), new IqtIdentityFactory(new IqtHashCreator(SHA1.Create())));
+                IPoorMansIoC ioc = new IqtIoc();
+
+                var rCreator = ioc.Get<IIqtIdentityCreator>();
+                rCreator.ThrowIfException();
+
+                var rCompare = ioc.Get<IIqtIdentityCompare>();
+                rCompare.ThrowIfException();
+
+                IIqtIdentityCreator creator = rCreator.ResultSet;
+                IIqtIdentityCompare comparer = rCompare.ResultSet;
 
                 var reference = result.GetData<IqtIdentitySetDTO>();
 
                 var current = creator.CreateFrom(reference.Excludes, options.Directories.ToArray());
-
-                IqtIdentityCompare comparer = new IqtIdentityCompare();
 
                 var comparerResult = comparer.CompareIdentities(reference.Identities, current);
 

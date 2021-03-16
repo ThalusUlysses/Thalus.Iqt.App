@@ -3,7 +3,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class IqtIdentityFactory : IIqtIdentityFactory
+    class IqtIdentityFactory : IIqtIdentityFactory
     {
         IIqtHashCreator _hash;
 

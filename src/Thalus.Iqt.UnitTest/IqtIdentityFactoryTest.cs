@@ -9,7 +9,21 @@ namespace Thalus.Iqt.UnitTest
     [TestFixture]
     public class IqtIdentityFactoryTest
     {
-        public static IIqtHashCreator[] HashCreators { get; set; } = new[] { new IqtHashCreator(SHA1.Create())};
+        public static IIqtHashCreator[] HashCreators { get; set; } = new[] 
+        {
+           CreatHashes(SHA1.Create())
+        };
+
+        static IIqtHashCreator CreatHashes(HashAlgorithm a)
+        {
+            IPoorMansIoC ioC = new IqtIoc();
+            ioC.Register<HashAlgorithm>((i) => { return a; });
+            
+            var fResult = ioC.Get<IIqtHashCreator>();
+            fResult.ThrowIfException();
+
+            return fResult.ResultSet;
+        }
 
 
         [Test(Author = "ThalusUlysses", Description = "Checks")]
@@ -17,7 +31,13 @@ namespace Thalus.Iqt.UnitTest
 
         public void CreateDefaultDirectoryIdentitiesTest(IIqtHashCreator c)
         {
-            var fact = new IqtIdentityFactory(c);
+            IPoorMansIoC ioC = new IqtIoc();
+            ioC.Register<IIqtHashCreator>((i) => { return c; });
+
+            var fResult = ioC.Get<IIqtIdentityFactory>();
+            fResult.ThrowIfException();
+
+            IIqtIdentityFactory fact = fResult.ResultSet;
 
             DirectoryInfoMock m = new DirectoryInfoMock {
                 FullName = "c:/klaus",
@@ -40,7 +60,13 @@ namespace Thalus.Iqt.UnitTest
         [TestCaseSource("HashCreators")]
         public void CreateDirectoryIdentitiesTest(IIqtHashCreator c)
         {
-            var fact = new IqtIdentityFactory(c);
+            IPoorMansIoC ioC = new IqtIoc();
+            ioC.Register<IIqtHashCreator>((i) => { return c; });
+
+            var fResult = ioC.Get<IIqtIdentityFactory>();
+            fResult.ThrowIfException();
+
+            IIqtIdentityFactory fact = fResult.ResultSet;
 
             DirectoryInfoMock m = new DirectoryInfoMock
             {
@@ -63,7 +89,13 @@ namespace Thalus.Iqt.UnitTest
         [TestCaseSource("HashCreators")]
         public void CreateDefaultFileIdentitiesTest(IIqtHashCreator c)
         {
-            var fact = new IqtIdentityFactory(c);
+            IPoorMansIoC ioC = new IqtIoc();
+            ioC.Register<IIqtHashCreator>((i) => { return c; });
+
+            var fResult = ioC.Get<IIqtIdentityFactory>();
+            fResult.ThrowIfException();
+
+            IIqtIdentityFactory fact = fResult.ResultSet;
 
             DirectoryInfoMock m = new DirectoryInfoMock
             {
@@ -87,7 +119,13 @@ namespace Thalus.Iqt.UnitTest
         [TestCaseSource("HashCreators")]
         public void CreateFileIdentitiesTest(IIqtHashCreator c)
         {
-            var fact = new IqtIdentityFactory(c);
+            IPoorMansIoC ioC = new IqtIoc();
+            ioC.Register<IIqtHashCreator>((i) => { return c; });
+
+            var fResult = ioC.Get<IIqtIdentityFactory>();
+            fResult.ThrowIfException();
+
+            IIqtIdentityFactory fact = fResult.ResultSet;
 
             DirectoryInfoMock m = new DirectoryInfoMock
             {

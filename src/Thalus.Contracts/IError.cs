@@ -25,8 +25,8 @@ namespace Thalus.Contracts
         /// <typeparam name="TType">Pass teh type to e data shall be converted to</typeparam>
         /// <returns>Returns the Exceptiona ccording to type</returns>
         TType GetException<TType>() where TType : Exception;
-
-       
+        
+        Exception Exception { get; }
     }
 
     public interface IWait

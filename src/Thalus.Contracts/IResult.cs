@@ -19,6 +19,14 @@
         bool CanExecute(object data);
     }
 
+    public interface IResult<TType> : IResult
+    {
+        TType ResultSet { get; }
+
+        void ThrowIfException();
+
+    }
+
 }
 
 

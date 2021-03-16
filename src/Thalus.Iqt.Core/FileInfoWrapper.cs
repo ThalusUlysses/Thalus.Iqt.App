@@ -4,7 +4,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class FileInfoWrapper : IFileInfo
+    class FileInfoWrapper : IFileInfo
     {
         FileInfo _fi;
 
