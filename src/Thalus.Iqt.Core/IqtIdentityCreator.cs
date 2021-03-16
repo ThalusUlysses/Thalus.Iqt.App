@@ -9,10 +9,10 @@ namespace Thalus.Iqt.Core
 {
     public class IqtIdentityCreator
     {
-        IoAccess _access;
+        IIoAccess _access;
         IIqtIdentityFactory _iqtFactory;
 
-        public IqtIdentityCreator(IoAccess access, IIqtIdentityFactory fact)
+        public IqtIdentityCreator(IIoAccess access, IIqtIdentityFactory fact)
         {
             _access = access;
             _iqtFactory = fact;

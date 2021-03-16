@@ -5,11 +5,11 @@ using Thalus.Iqt.Core.Contracts;
 namespace Thalus.Iqt.Core.Contracts
 {
     /// <summary>
-    /// Publishes the public members of <see cref="IoAccess"/> such like
+    /// Publishes the public members of <see cref="IIoAccess"/> such like
     /// <see cref="GetDirectories(string)"/> or <see cref="ReadAllText(string, Encoding)"/>.
-    /// The <see cref="IoAccess"/> covers the lack of some IO functions are un mockable for testing
+    /// The <see cref="IIoAccess"/> covers the lack of some IO functions are un mockable for testing
     /// </summary>
-    public interface IoAccess
+    public interface IIoAccess
     {
         /// <summary>
         ///  Gets directory information for a specific folder by name

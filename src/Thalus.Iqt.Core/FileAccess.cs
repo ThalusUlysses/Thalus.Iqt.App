@@ -7,7 +7,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
-    public class FileAccess : IoAccess
+    public class FileAccess : IIoAccess
     {
         public IFileVersionInfo GetVersionInfoOf(string fileName)
         {

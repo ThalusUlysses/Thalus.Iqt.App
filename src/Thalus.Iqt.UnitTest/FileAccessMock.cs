@@ -6,7 +6,7 @@ using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.UnitTest
 {
-    class FileAccessMock : IoAccess
+    class FileAccessMock : IIoAccess
     {
         DateTime _time = DateTime.UtcNow;
         bool _writeReadFails;
