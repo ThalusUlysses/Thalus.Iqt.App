@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
 namespace Thalus.Iqt.App
 {
     class Program
     {
         static void Main(string[] args)
-        {   
+        {
             IqTFileConsoleHandler hndlr = new IqTFileConsoleHandler(LogMeToConsole);
 
             Environment.ExitCode = hndlr.Process(args);

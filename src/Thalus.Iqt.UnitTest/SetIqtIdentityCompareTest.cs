@@ -20,7 +20,7 @@ namespace Thalus.Iqt.UnitTest
             IqtIdentitySetDTO dto = new IqtIdentitySetDTO
             {
                 Identities = new[]
-                { 
+                {
                     new IqtIdentityDTO
                     {
                         Excluded = false,
@@ -78,9 +78,9 @@ namespace Thalus.Iqt.UnitTest
             };
 
 
-           
 
-            var result = c.CompareIdentitySet( dto , dto2);
+
+            var result = c.CompareIdentitySet(dto, dto2);
 
             Assert.True(result.Success);
             Assert.AreEqual(402, result.Code);
@@ -126,7 +126,7 @@ namespace Thalus.Iqt.UnitTest
                 }
             };
 
-            var result = c.CompareIdentitySet( dto, dto2 );
+            var result = c.CompareIdentitySet(dto, dto2);
 
             Assert.True(result.Success);
             Assert.AreEqual(402, result.Code);
@@ -177,7 +177,7 @@ namespace Thalus.Iqt.UnitTest
                         QualifiedName = "23456789"
                     }
                 }
-            };            
+            };
 
             var result = c.CompareIdentitySet(dto, dto2);
 
@@ -232,7 +232,7 @@ namespace Thalus.Iqt.UnitTest
                 }
             };
 
-            var result = c.CompareIdentitySet( dto, dto2);
+            var result = c.CompareIdentitySet(dto, dto2);
 
             Assert.True(result.Success);
             Assert.AreEqual(402, result.Code);

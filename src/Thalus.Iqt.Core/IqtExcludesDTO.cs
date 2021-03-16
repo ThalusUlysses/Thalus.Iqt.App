@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace Thalus.Iqt.Core
 {

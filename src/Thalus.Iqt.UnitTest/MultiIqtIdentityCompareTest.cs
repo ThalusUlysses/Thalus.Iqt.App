@@ -11,7 +11,7 @@ namespace Thalus.Iqt.UnitTest
         public void CompareIdentityEqualTest()
         {
             IPoorMansIoC ioC = new IqtIoc();
-            
+
             var cResult = ioC.Get<IIqtIdentityCompare>();
             cResult.ThrowIfException();
 

@@ -15,7 +15,7 @@ namespace Thalus.Contracts
 
         IText IProvideText.GetText() { return new TextDTO(Text); }
 
-        public TType GetData<TType>() where TType: class
+        public TType GetData<TType>() where TType : class
         {
             if (Data == null)
             {
@@ -102,12 +102,12 @@ namespace Thalus.Contracts
             };
         }
 
-        public static IResult Ok(IText text,int code = StatusCode.OK, object data = null)
+        public static IResult Ok(IText text, int code = StatusCode.OK, object data = null)
         {
             return Ok(code, text?.Invariant, text?.Localized, text?.Locale, data);
         }
 
-        public static IResult<TType> Ok<TType>(TType data,IText text=null, int code = StatusCode.OK)
+        public static IResult<TType> Ok<TType>(TType data, IText text = null, int code = StatusCode.OK)
         {
             return Ok<TType>(code, text?.Invariant, text?.Localized, text?.Locale, data);
         }
@@ -152,12 +152,12 @@ namespace Thalus.Contracts
 
     public class Result<TType> : Result, IResult<TType>
     {
-        public TType ResultSet 
+        public TType ResultSet
         {
-            get 
+            get
             {
-                return Success? (TType) Data : default(TType) ; 
-            } 
+                return Success ? (TType)Data : default(TType);
+            }
         }
 
         public void ThrowIfException()

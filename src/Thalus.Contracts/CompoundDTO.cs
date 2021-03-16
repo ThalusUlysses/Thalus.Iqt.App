@@ -40,9 +40,9 @@ namespace Thalus.Contracts
                 }
                 if (item.Value.GetType() == typeof(CompoundDTO))
                 {
-                    
-                        
-                    GetKeysPrefixed(((CompoundDTO)item.Value),prf,st);
+
+
+                    GetKeysPrefixed(((CompoundDTO)item.Value), prf, st);
                     continue;
                 }
 

@@ -51,7 +51,7 @@ namespace Thalus.Iqt.Core
                     throw nEx;
                 }
 
-                return Result.Exception<TType>(nEx,nEx.Message);
+                return Result.Exception<TType>(nEx, nEx.Message);
             }
         }
     }
@@ -63,7 +63,7 @@ namespace Thalus.Iqt.Core
             Type = tp;
         }
 
-        public IqtInstanceCreateException(Type tp,Exception ex):base (ex.Message,ex)
+        public IqtInstanceCreateException(Type tp, Exception ex) : base(ex.Message, ex)
         {
             Type = tp;
         }
@@ -103,6 +103,6 @@ namespace Thalus.Iqt.Core
             Type = tp;
         }
 
-        public Type Type { get;  }
+        public Type Type { get; }
     }
 }

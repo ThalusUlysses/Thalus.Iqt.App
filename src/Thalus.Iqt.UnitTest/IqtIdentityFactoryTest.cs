@@ -9,7 +9,7 @@ namespace Thalus.Iqt.UnitTest
     [TestFixture]
     public class IqtIdentityFactoryTest
     {
-        public static IIqtHashCreator[] HashCreators { get; set; } = new[] 
+        public static IIqtHashCreator[] HashCreators { get; set; } = new[]
         {
            CreatHashes(SHA1.Create())
         };
@@ -18,7 +18,7 @@ namespace Thalus.Iqt.UnitTest
         {
             IPoorMansIoC ioC = new IqtIoc();
             ioC.Register<HashAlgorithm>((i) => { return a; });
-            
+
             var fResult = ioC.Get<IIqtHashCreator>();
             fResult.ThrowIfException();
 
@@ -39,7 +39,8 @@ namespace Thalus.Iqt.UnitTest
 
             IIqtIdentityFactory fact = fResult.ResultSet;
 
-            DirectoryInfoMock m = new DirectoryInfoMock {
+            DirectoryInfoMock m = new DirectoryInfoMock
+            {
                 FullName = "c:/klaus",
                 Name = "klaus",
                 CreationTimeUtc = DateTime.UtcNow
@@ -105,7 +106,7 @@ namespace Thalus.Iqt.UnitTest
                 CreationTimeUtc = DateTime.UtcNow
             };
 
-            var k = fact.Create(m,m);
+            var k = fact.Create(m, m);
 
             Assert.IsFalse(k.Excluded);
             Assert.AreEqual(m.FullName, k.FullName);
@@ -137,7 +138,7 @@ namespace Thalus.Iqt.UnitTest
                 FileName = "MyProductFileName",
                 ProductVersion = "MyProductVersion",
                 FileVersion = "MyProductFileVersion",
-            };         
+            };
 
             var k = fact.Create(m, m);
 

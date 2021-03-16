@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Thalus.Iqt.Core.Contracts;
+﻿using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {
@@ -51,7 +50,7 @@ namespace Thalus.Iqt.Core
             return qualifiedName;
         }
 
-       
+
 
     }
 }

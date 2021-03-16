@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 
 namespace Thalus.Contracts
 {
@@ -16,10 +15,10 @@ namespace Thalus.Contracts
             return typeof(TType).CanAssign(o);
         }
     }
-    
+
     public static class AppDomainExtensions
     {
-        public static TType Create<TType>(this AppDomain asm,string type,params object[] parameters)
+        public static TType Create<TType>(this AppDomain asm, string type, params object[] parameters)
         {
             var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(i => i.GetTypes());
 
@@ -29,7 +28,7 @@ namespace Thalus.Contracts
             {
                 return (TType)Activator.CreateInstance(typeCreate);
             }
-            return (TType) Activator.CreateInstance(typeCreate, parameters);
+            return (TType)Activator.CreateInstance(typeCreate, parameters);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Thalus.Iqt.UnitTest
     [TestFixture]
     public class IqtHashCreatorTests
     {
-        public static HashAlgorithm[] Creators { get; set; } =  new HashAlgorithm[] { SHA1.Create(), SHA256.Create() };
+        public static HashAlgorithm[] Creators { get; set; } = new HashAlgorithm[] { SHA1.Create(), SHA256.Create() };
 
         [Test(Author = "ThalusUlysses", Description = "Checks")]
         [TestCaseSource("Creators")]
@@ -21,14 +21,14 @@ namespace Thalus.Iqt.UnitTest
 
             var rHashCreator = ioC.Get<IIqtHashCreator>();
             rHashCreator.ThrowIfException();
-            
+
             IIqtHashCreator c = rHashCreator.ResultSet;
             var hash = creator.ComputeHash(Encoding.UTF8.GetBytes("klaus"));
 
             var k = BitConverter.ToString(hash);
 
             var hsh = c.CreateHash("klaus");
-            
+
             Assert.IsNotNull(hsh);
             Assert.AreEqual(k, hsh);
         }

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Thalus.Iqt.Core
 {
     public class IqtIdentityResultSetDTO : IIqtIdentityResultSetDTO
-    { 
+    {
         public void AddExpectedButNotThere(IqtIdentityResultDTO dto)
         {
             ExpectedButNotThere.Add(dto);
@@ -30,14 +29,14 @@ namespace Thalus.Iqt.Core
             ThereButWrongHash.Add(dto);
         }
 
-        public List<IqtIdentityResultDTO> ExpectedButNotThere { get; set; }
+        public List<IqtIdentityResultDTO> ExpectedButNotThere { get; set; } = new List<IqtIdentityResultDTO>();
 
-        public List<IqtIdentityResultDTO> ExcludedButNotThere { get; set; }
+        public List<IqtIdentityResultDTO> ExcludedButNotThere { get; set; } = new List<IqtIdentityResultDTO>();
 
-        public List<IqtIdentityResultDTO> ThereButExcluded { get; set; }
+        public List<IqtIdentityResultDTO> ThereButExcluded { get; set; } = new List<IqtIdentityResultDTO>();
 
-        public List<IqtIdentityResultDTO> ThereButNotExpected { get; set; }
+        public List<IqtIdentityResultDTO> ThereButNotExpected { get; set; } = new List<IqtIdentityResultDTO>();
 
-        public List<IqtIdentityResultDTO> ThereButWrongHash { get; set; }       
+        public List<IqtIdentityResultDTO> ThereButWrongHash { get; set; } = new List<IqtIdentityResultDTO>();
     }
 }

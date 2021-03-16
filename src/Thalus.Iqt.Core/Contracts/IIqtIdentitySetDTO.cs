@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Thalus.Iqt.Core
+﻿namespace Thalus.Iqt.Core
 {
     public interface IIqtIdentitySetDTO
     {

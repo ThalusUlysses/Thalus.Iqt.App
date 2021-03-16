@@ -1,7 +1,5 @@
 using NUnit.Framework;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text.Unicode;
 using Thalus.Iqt.Core;
 using Thalus.Iqt.Core.Contracts;
 
@@ -21,7 +19,7 @@ namespace Thalus.Iqt.UnitTest
 
             IIqtIdentityCreator c = rCreator.ResultSet;
             var k = c.CreateFrom(null, "c:/klaus");
-            
+
             Assert.AreEqual(2, k.Length);
 
             foreach (var item in k)

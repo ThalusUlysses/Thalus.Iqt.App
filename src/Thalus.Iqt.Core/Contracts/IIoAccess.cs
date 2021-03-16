@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using Thalus.Contracts;
-using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core.Contracts
 {

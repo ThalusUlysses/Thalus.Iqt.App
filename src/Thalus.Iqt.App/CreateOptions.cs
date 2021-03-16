@@ -6,7 +6,7 @@ namespace Thalus.Iqt.App
     [Verb("create", HelpText = "Creates an Installation Qualification Test file from existing folders")]
     class CreateOptions
     {
-        [Option('o',"output",HelpText = "Installation Qualification Test reference output file *.json")]
+        [Option('o', "output", HelpText = "Installation Qualification Test reference output file *.json")]
         public string OutFile { get; set; }
 
         [Option('f', "force", HelpText = "Enables overwriting existing reference files *.json")]
@@ -18,15 +18,15 @@ namespace Thalus.Iqt.App
 
         [Option("exclude-files", HelpText = "Exclude specific list of files from IQT creation with full qualified name")]
         public IEnumerable<string> ExcludeFiles { get; set; }
-        
-        [Option("exclude-file-endings", HelpText ="Exclude a list of files with specific file endings")]
+
+        [Option("exclude-file-endings", HelpText = "Exclude a list of files with specific file endings")]
         public IEnumerable<string> ExcludeFileEndings { get; set; }
 
-        [Option("exclude-file-regex", HelpText ="Exclude files by list of regular expressions")]
+        [Option("exclude-file-regex", HelpText = "Exclude files by list of regular expressions")]
         public IEnumerable<string> ExcludeFileNamePattern { get; set; }
 
-        [Option("exclude-directories", HelpText ="Exclude list of directoreis by full qualified name")]
-        public IEnumerable<string> ExcludeDirectories { get; set; }  
+        [Option("exclude-directories", HelpText = "Exclude list of directoreis by full qualified name")]
+        public IEnumerable<string> ExcludeDirectories { get; set; }
 
         [Option("exclude-directory regex", HelpText = "Exclude list of directoreis by regular expression")]
         public IEnumerable<string> ExcludeDirectoryNamePatterns { get; set; }

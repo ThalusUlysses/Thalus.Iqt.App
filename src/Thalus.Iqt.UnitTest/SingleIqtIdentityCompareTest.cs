@@ -57,7 +57,7 @@ namespace Thalus.Iqt.UnitTest
                 Hash = "98765432",
                 Name = "MyName",
                 QualifiedName = "23456789"
-            };            
+            };
 
             var result = c.CompareIdentity(dto, dto2);
             Assert.True(result.Success);
@@ -175,7 +175,7 @@ namespace Thalus.Iqt.UnitTest
                 QualifiedName = "23456789"
             };
 
-            
+
 
             var result = c.CompareIdentity(dto, dto2);
             Assert.True(result.Success);

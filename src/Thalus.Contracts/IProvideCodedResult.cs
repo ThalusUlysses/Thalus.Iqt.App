@@ -48,7 +48,7 @@ namespace Thalus.Contracts
         string DotNetName { get; }
 
         IDictionary<string, object> Parameters { get; }
-        
+
         string[] TraceForAttributes { get; }
         TraceCategories Categories { get; }
 
@@ -62,12 +62,12 @@ namespace Thalus.Contracts
         void Trace(ITraceEntry e);
     }
 
-    [Flags]    
+    [Flags]
     public enum TraceCategories { Fatal = 0, Error = 1, Warning = 2, Info = 4, Debug = 8 }
 
     public interface ITrace
     {
-        void Error(string invariant, string localized = null, string locale = null, object data = null, string[] attributes=null,[CallerMemberName]string caller = null, [CallerFilePath]string file = null, [CallerLineNumber] int line = -1);
+        void Error(string invariant, string localized = null, string locale = null, object data = null, string[] attributes = null, [CallerMemberName]string caller = null, [CallerFilePath]string file = null, [CallerLineNumber] int line = -1);
         void Warning(string invariant, string localized = null, string locale = null, object data = null, string[] attributes = null, [CallerMemberName]string caller = null, [CallerFilePath]string file = null, [CallerLineNumber] int line = -1);
         void Info(string invariant, string localized = null, string locale = null, object data = null, string[] attributes = null, [CallerMemberName]string caller = null, [CallerFilePath]string file = null, [CallerLineNumber] int line = -1);
         void Debug(string invariant, string localized = null, string locale = null, object data = null, string[] attributes = null, [CallerMemberName]string caller = null, [CallerFilePath]string file = null, [CallerLineNumber] int line = -1);
@@ -94,8 +94,8 @@ namespace Thalus.Contracts
         /// <param name="id">Pass the id you like to get the configuration for</param>
         /// <param name="callback">Pass the update configuration callback, to ge notified for changes</param>
         /// <returns>Returns a result of type <see cref="IResult"/> that indicates if the execution was successful</returns>
-        IResult Get(string id, Action<IConfiguration> callback=null);
-        
+        IResult Get(string id, Action<IConfiguration> callback = null);
+
         /// <summary>
         /// Sets the configuration by its id. Please note that this action my case another configuration update.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Thalus.Contracts
     {
         string Id { get; }
 
-        object Item  { get; }
+        object Item { get; }
     }
 
     public class ConfigurationDTO : IConfiguration

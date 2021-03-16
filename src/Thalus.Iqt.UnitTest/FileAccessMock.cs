@@ -19,7 +19,7 @@ namespace Thalus.Iqt.UnitTest
 
         public string[] GetDirectories(string dirName)
         {
-            return new string [0];
+            return new string[0];
 
         }
 

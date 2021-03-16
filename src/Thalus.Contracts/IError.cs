@@ -13,7 +13,7 @@ namespace Thalus.Contracts
         /// Indicates that the result is an exception
         /// </summary>
         bool IsException { get; }
-        
+
         /// <summary>
         /// Gets the type of exception depending to the <see cref="IsException"/> flag.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Thalus.Contracts
         /// <typeparam name="TType">Pass teh type to e data shall be converted to</typeparam>
         /// <returns>Returns the Exceptiona ccording to type</returns>
         TType GetException<TType>() where TType : Exception;
-        
+
         Exception Exception { get; }
     }
 

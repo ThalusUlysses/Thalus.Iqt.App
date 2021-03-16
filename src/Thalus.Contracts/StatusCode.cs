@@ -8,7 +8,7 @@
 
         public static bool IsError(int code)
         {
-            if(code >= 300 || code> 200)
+            if (code >= 300 || code > 200)
             {
                 return true;
             }

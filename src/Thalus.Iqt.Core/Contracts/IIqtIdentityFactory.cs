@@ -1,6 +1,4 @@
-﻿using Thalus.Iqt.Core.Contracts;
-
-namespace Thalus.Iqt.Core.Contracts
+﻿namespace Thalus.Iqt.Core.Contracts
 {
     /// <summary>
     /// Publishes the public members of <see cref="IIqtIdentityFactory"/> such like

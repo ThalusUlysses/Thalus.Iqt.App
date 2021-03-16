@@ -152,7 +152,7 @@ namespace Thalus.Contracts
                     }
 
                     _items.Add(item);
-                    return Result.Ok(data:item);
+                    return Result.Ok(data: item);
                 }
             }
             catch (Exception ex)

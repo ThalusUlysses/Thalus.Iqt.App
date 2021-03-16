@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using Thalus.Contracts;
 using Thalus.Iqt.Core;
 
@@ -19,7 +18,7 @@ namespace Thalus.Iqt.App
 
         public IqTFileConsoleHandler() : this(null)
         {
-            
+
         }
 
         public IqTFileConsoleHandler(Action<string> log)
@@ -76,7 +75,7 @@ namespace Thalus.Iqt.App
             return args;
         }
 
-        private void SafeLog(string text, object data=null)
+        private void SafeLog(string text, object data = null)
         {
             if (_logMe == null)
             {
@@ -93,7 +92,7 @@ namespace Thalus.Iqt.App
 
         private void ProcessExitCodes(ExitCodes c)
         {
-            
+
         }
 
         private IqtExcludesDTO CreateExcludesFrom(CreateOptions args)
@@ -110,10 +109,10 @@ namespace Thalus.Iqt.App
         }
 
         private void ProcessErrors(IEnumerable<Error> list)
-        { 
+        {
             var o = list.First();
 
-            if (o.Tag == ErrorType.HelpRequestedError || o.Tag  == ErrorType.HelpVerbRequestedError)
+            if (o.Tag == ErrorType.HelpRequestedError || o.Tag == ErrorType.HelpVerbRequestedError)
             {
                 SetResultAndExitCode(Result.Ok());
                 return;
@@ -141,7 +140,7 @@ namespace Thalus.Iqt.App
 
                 var set = new IqtIdentitySetDTO { Excludes = excludes, Identities = current };
 
-               var result =  access.Write(set, options.OutFile, options.Force);
+                var result = access.Write(set, options.OutFile, options.Force);
 
                 if (result.Success)
                 {
@@ -190,15 +189,15 @@ namespace Thalus.Iqt.App
                 var comparerResult = comparer.CompareIdentities(reference.Identities, current);
 
                 var writeResult = a.Write(comparerResult.GetData<IqtIdentityResultSetDTO>(), options.OutFile, options.Force);
-                
-                IResult overallResult = writeResult.Success ? 
-                    Result.Ok(code:comparerResult.Code, invariant: $"IQT comparison complete. Find result ad: {options.OutFile}", data: comparerResult.Data) : 
+
+                IResult overallResult = writeResult.Success ?
+                    Result.Ok(code: comparerResult.Code, invariant: $"IQT comparison complete. Find result ad: {options.OutFile}", data: comparerResult.Data) :
                     Result.Fail(code: 403, $"Failed to wirte result to: {options.OutFile}", data: comparerResult.Data);
 
                 SetResultAndExitCode(overallResult);
             }
             catch (Exception ex)
-            {   
+            {
                 SetResultAndExitCode(Result.Exception(ex));
             }
         }
@@ -215,7 +214,7 @@ namespace Thalus.Iqt.App
                 _exitCode = r.Code;
             }
 
-            if (_exitCode == 0 &&  r.Code < 200 || r.Code >= 300) 
+            if (_exitCode == 0 && r.Code < 200 || r.Code >= 300)
             {
                 _exitCode = r.Code;
             }

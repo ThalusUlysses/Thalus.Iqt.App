@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace Thalus.Contracts
+﻿namespace Thalus.Contracts
 {
 
     public interface IText

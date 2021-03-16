@@ -1,11 +1,10 @@
 ﻿using System;
-using Thalus.Contracts;
 
 namespace Thalus.Contracts
 {
     public class TraceEntryDTO : ITraceEntry
     {
-       public  string WriterId { get; set; }
+        public string WriterId { get; set; }
 
         public TraceCategories Category { get; set; }
 
