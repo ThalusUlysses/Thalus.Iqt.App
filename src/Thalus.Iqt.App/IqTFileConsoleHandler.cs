@@ -126,10 +126,7 @@ namespace Thalus.Iqt.App
             {
                 IPoorMansIoC ioc = new IqtIoc();
 
-
-
-                var rCreator = ioc.Get<IIqtIdentityCreator>();
-                rCreator.ThrowIfException();
+                var rCreator = ioc.Get<IIqtIdentityCreator>().ThrowIfException();
                 var creator = rCreator.ResultSet;
 
                 var excludes = CreateExcludesFrom(options);
@@ -160,7 +157,6 @@ namespace Thalus.Iqt.App
         {
             try
             {
-
                 IqtOutFileAccess a = new IqtOutFileAccess();
 
                 var result = a.Read(options.ReferenceFile);
@@ -173,11 +169,8 @@ namespace Thalus.Iqt.App
 
                 IPoorMansIoC ioc = new IqtIoc();
 
-                var rCreator = ioc.Get<IIqtIdentityCreator>();
-                rCreator.ThrowIfException();
-
-                var rCompare = ioc.Get<IIqtIdentityCompare>();
-                rCompare.ThrowIfException();
+                var rCreator = ioc.Get<IIqtIdentityCreator>().ThrowIfException();
+                var rCompare = ioc.Get<IIqtIdentityCompare>().ThrowIfException();
 
                 IIqtIdentityCreator creator = rCreator.ResultSet;
                 IIqtIdentityCompare comparer = rCompare.ResultSet;

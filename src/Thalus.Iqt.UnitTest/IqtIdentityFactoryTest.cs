@@ -17,10 +17,9 @@ namespace Thalus.Iqt.UnitTest
         static IIqtHashCreator CreatHashes(HashAlgorithm a)
         {
             IPoorMansIoC ioC = new IqtIoc();
-            ioC.Register<HashAlgorithm>((i) => { return a; });
+            ioC.Register<HashAlgorithm>(() => { return a; });
 
-            var fResult = ioC.Get<IIqtHashCreator>();
-            fResult.ThrowIfException();
+            var fResult = ioC.Get<IIqtHashCreator>().ThrowIfException();
 
             return fResult.ResultSet;
         }
@@ -32,10 +31,9 @@ namespace Thalus.Iqt.UnitTest
         public void CreateDefaultDirectoryIdentitiesTest(IIqtHashCreator c)
         {
             IPoorMansIoC ioC = new IqtIoc();
-            ioC.Register<IIqtHashCreator>((i) => { return c; });
+            ioC.Register<IIqtHashCreator>(() => { return c; });
 
-            var fResult = ioC.Get<IIqtIdentityFactory>();
-            fResult.ThrowIfException();
+            var fResult = ioC.Get<IIqtIdentityFactory>().ThrowIfException();
 
             IIqtIdentityFactory fact = fResult.ResultSet;
 
@@ -62,10 +60,9 @@ namespace Thalus.Iqt.UnitTest
         public void CreateDirectoryIdentitiesTest(IIqtHashCreator c)
         {
             IPoorMansIoC ioC = new IqtIoc();
-            ioC.Register<IIqtHashCreator>((i) => { return c; });
+            ioC.Register<IIqtHashCreator>(() => { return c; });
 
-            var fResult = ioC.Get<IIqtIdentityFactory>();
-            fResult.ThrowIfException();
+            var fResult = ioC.Get<IIqtIdentityFactory>().ThrowIfException();
 
             IIqtIdentityFactory fact = fResult.ResultSet;
 
@@ -91,10 +88,9 @@ namespace Thalus.Iqt.UnitTest
         public void CreateDefaultFileIdentitiesTest(IIqtHashCreator c)
         {
             IPoorMansIoC ioC = new IqtIoc();
-            ioC.Register<IIqtHashCreator>((i) => { return c; });
+            ioC.Register<IIqtHashCreator>(() => { return c; });
 
-            var fResult = ioC.Get<IIqtIdentityFactory>();
-            fResult.ThrowIfException();
+            var fResult = ioC.Get<IIqtIdentityFactory>().ThrowIfException();
 
             IIqtIdentityFactory fact = fResult.ResultSet;
 
@@ -121,7 +117,7 @@ namespace Thalus.Iqt.UnitTest
         public void CreateFileIdentitiesTest(IIqtHashCreator c)
         {
             IPoorMansIoC ioC = new IqtIoc();
-            ioC.Register<IIqtHashCreator>((i) => { return c; });
+            ioC.Register<IIqtHashCreator>(() => { return c; });
 
             var fResult = ioC.Get<IIqtIdentityFactory>();
             fResult.ThrowIfException();

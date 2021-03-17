@@ -7,7 +7,7 @@ namespace Thalus.Iqt.Core
     public abstract class PoorMansIoC : IPoorMansIoC
     {
         bool _favorExceptionsOverResult;
-        Dictionary<Type, Func<IPoorMansIoC, object>> _creators;
+        Dictionary<Type, Func<object>> _creators;
 
         public PoorMansIoC(bool favorExceptionsOverResult)
         {
@@ -15,11 +15,19 @@ namespace Thalus.Iqt.Core
             _creators = Initialize();
         }
 
-        protected abstract Dictionary<Type, Func<IPoorMansIoC, object>> Initialize();
+        protected abstract Dictionary<Type, Func<object>> Initialize();
 
-        public void Register<TType>(Func<IPoorMansIoC, object> a)
+        public void Register<TType>(Func<object> a)
         {
             _creators[typeof(TType)] = a;
+        }
+
+        protected void ThrowIfException<TType>(IResult<TType> eg)
+        {
+            if (_favorExceptionsOverResult && !eg.Success && eg.GetError().IsException)
+            {
+                throw eg.GetError().Exception;
+            }
         }
 
         public IResult<TType> Get<TType>()
@@ -28,7 +36,7 @@ namespace Thalus.Iqt.Core
 
             try
             {
-                Func<IPoorMansIoC, object> o;
+                Func<object> o;
                 if (!_creators.TryGetValue(type, out o))
                 {
                     var ex = new IqtTypeNotFoundException(type, $"Passed type={type} was not listed. An instance could not be created");
@@ -40,7 +48,7 @@ namespace Thalus.Iqt.Core
                     return Result.Exception<TType>(ex, ex.Message);
                 }
 
-                return Result.Ok((TType)o.Invoke(this));
+                return Result.Ok((TType)o.Invoke());
             }
             catch (Exception ex)
             {

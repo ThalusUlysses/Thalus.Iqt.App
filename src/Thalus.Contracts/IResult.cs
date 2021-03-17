@@ -23,7 +23,7 @@
     {
         TType ResultSet { get; }
 
-        void ThrowIfException();
+        IResult<TType> ThrowIfException();
 
     }
 

@@ -12,7 +12,7 @@ namespace Thalus.Iqt.UnitTest
         public void CreateIdentitiesTest()
         {
             var ioC = new IqtIoc();
-            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+            ioC.Register<IIoAccess>(() => { return new FileAccessMock(false); });
 
             var rCreator = ioC.Get<IIqtIdentityCreator>();
             rCreator.ThrowIfException();
@@ -65,7 +65,7 @@ namespace Thalus.Iqt.UnitTest
         public void CreateIdentitiesExcludeDirectoryTest(IqtExcludesDTO ex)
         {
             var ioC = new IqtIoc();
-            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+            ioC.Register<IIoAccess>(() => { return new FileAccessMock(false); });
 
             var rCreator = ioC.Get<IIqtIdentityCreator>();
             rCreator.ThrowIfException();
@@ -91,7 +91,7 @@ namespace Thalus.Iqt.UnitTest
         public void CreateIdentitiesExcludeAllTest(IqtExcludesDTO ex)
         {
             var ioC = new IqtIoc();
-            ioC.Register<IIoAccess>((i) => { return new FileAccessMock(false); });
+            ioC.Register<IIoAccess>(() => { return new FileAccessMock(false); });
 
             var rCreator = ioC.Get<IIqtIdentityCreator>();
             rCreator.ThrowIfException();

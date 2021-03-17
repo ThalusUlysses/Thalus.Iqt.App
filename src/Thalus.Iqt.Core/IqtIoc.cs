@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Thalus.Contracts;
 using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
@@ -15,9 +16,9 @@ namespace Thalus.Iqt.Core
         {
         }
 
-        protected override Dictionary<Type, Func<IPoorMansIoC, object>> Initialize()
+        protected override Dictionary<Type, Func<object>> Initialize()
         {
-            return new Dictionary<Type, Func<IPoorMansIoC, object>>()
+            return new Dictionary<Type, Func<object>>()
             {
                 { typeof(HashAlgorithm),CreateHashAlgorithm },
                 { typeof(IIqtIdentityCompare),CreateIqtIdentityCompare },
@@ -27,47 +28,47 @@ namespace Thalus.Iqt.Core
                 { typeof(IIqtIdentityCreator),CreateIqtIdentityCreator }
             };
         }
-        protected virtual HashAlgorithm CreateHashAlgorithm(IPoorMansIoC i)
+        public HashAlgorithm CreateHashAlgorithm()
         {
             return SHA1.Create();
         }
 
 
-        protected virtual IIqtHashCreator CreateHashCreator(IPoorMansIoC i)
+        public IIqtHashCreator CreateHashCreator()
         {
-            var hResult = i.Get<HashAlgorithm>();
+            var hResult = Get<HashAlgorithm>();
             hResult.ThrowIfException();
 
             return new IqtHashCreator(hResult.ResultSet);
         }
 
-        protected virtual IIoAccess CreateIoAccess(IPoorMansIoC i)
+        public IIoAccess CreateIoAccess()
         {
             return new FileAccess();
         }
 
-        protected virtual IIqtIdentityCompare CreateIqtIdentityCompare(IPoorMansIoC i)
+        public IIqtIdentityCompare CreateIqtIdentityCompare()
         {
             return new IqtIdentityCompare();
         }
 
-        protected virtual IIqtIdentityFactory CreateIqtIdentityFactory(IPoorMansIoC i)
+        public IIqtIdentityFactory CreateIqtIdentityFactory()
         {
-            var r = i.Get<IIqtHashCreator>();
-            r.ThrowIfException();
+            var r = Get<IIqtHashCreator>();
+            ThrowIfException<IIqtHashCreator>(r);
 
             return new IqtIdentityFactory(r.ResultSet);
         }
 
-        protected virtual IIqtIdentityCreator CreateIqtIdentityCreator(IPoorMansIoC i)
+        public IIqtIdentityCreator CreateIqtIdentityCreator()
         {
-            var rAccess = i.Get<IIoAccess>();
+            var rAccess = Get<IIoAccess>();
             rAccess.ThrowIfException();
 
-            var rFactory = i.Get<IIqtIdentityFactory>();
+            var rFactory = Get<IIqtIdentityFactory>();
             rFactory.ThrowIfException();
 
             return new IqtIdentityCreator(rAccess.ResultSet, rFactory.ResultSet);
-        }
+        }       
     }
 }

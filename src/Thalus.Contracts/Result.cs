@@ -160,11 +160,11 @@ namespace Thalus.Contracts
             }
         }
 
-        public void ThrowIfException()
+        public IResult<TType> ThrowIfException()
         {
             if (Success)
             {
-                return;
+                return this;
             }
 
             var error = this.GetError();
@@ -172,6 +172,8 @@ namespace Thalus.Contracts
             {
                 throw error.Exception;
             }
+
+            return this;
         }
     }
 }

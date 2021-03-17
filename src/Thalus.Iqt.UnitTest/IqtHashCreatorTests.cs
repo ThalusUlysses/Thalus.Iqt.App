@@ -17,7 +17,7 @@ namespace Thalus.Iqt.UnitTest
         public void CreateHashWithoutExcepionTest(HashAlgorithm creator)
         {
             var ioC = new IqtIoc();
-            ioC.Register<HashAlgorithm>((i) => { return creator; });
+            ioC.Register<HashAlgorithm>(() => { return creator; });
 
             var rHashCreator = ioC.Get<IIqtHashCreator>();
             rHashCreator.ThrowIfException();
