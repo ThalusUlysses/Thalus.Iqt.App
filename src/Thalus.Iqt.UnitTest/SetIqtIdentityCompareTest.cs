@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System.Linq;
 using Thalus.Iqt.Core;
+using Thalus.Iqt.Core.Contracts;
+using Thalus.Iqt.Core.Contracts.DTO;
 
 namespace Thalus.Iqt.UnitTest
 {

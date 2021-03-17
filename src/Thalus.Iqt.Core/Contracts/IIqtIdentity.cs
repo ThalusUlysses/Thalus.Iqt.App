@@ -1,6 +1,6 @@
-﻿namespace Thalus.Iqt.Core
+﻿namespace Thalus.Iqt.Core.Contracts
 {
-    public interface IIqtIdentityDTO
+    public interface IIqtIdentity
     {
         bool Excluded { get; set; }
         string FullName { get; set; }

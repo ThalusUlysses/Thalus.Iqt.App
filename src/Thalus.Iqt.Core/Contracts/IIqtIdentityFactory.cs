@@ -12,7 +12,7 @@
         /// <param name="di">Pass the <see cref="IDirectoryInfo"/> to create an identity from</param>
         /// <param name="includeDirectoryCreationTime">Includes the creation time of a directory as identity attribute when true</param>
         /// <returns>Returns an <see cref="IqtIdentityDTO"/> representation of the passed values</returns>
-        IqtIdentityDTO Create(IDirectoryInfo di, bool includeDirectoryCreationTime);
+        IIqtIdentity Create(IDirectoryInfo di, bool includeDirectoryCreationTime);
 
 
         /// <summary>
@@ -21,6 +21,6 @@
         /// <param name="fi">Pass the <see cref="IFileInfo"/> to create an identity from</param>
         /// <param name="fvi">Pass the <see cref="IFileVersionInfo"/> to create an identity from</param>
         /// <returns>Returns an <see cref="IqtIdentityDTO"/> representation of the passed values</returns>
-        IqtIdentityDTO Create(IFileInfo fi, IFileVersionInfo fvi);
+        IIqtIdentity Create(IFileInfo fi, IFileVersionInfo fvi);
     }
 }

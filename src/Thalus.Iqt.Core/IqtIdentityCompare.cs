@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Thalus.Contracts;
+using Thalus.Iqt.Core.Contracts;
+using Thalus.Iqt.Core.Contracts.DTO;
 
 namespace Thalus.Iqt.Core
 {
     class IqtIdentityCompare : IIqtIdentityCompare
     {
-        public IResult CompareIdentities(IIqtIdentityDTO[] expected, IIqtIdentityDTO[] current)
+        public IResult CompareIdentities(IIqtIdentity[] expected, IIqtIdentity[] current)
         {
             IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
 
@@ -17,7 +19,7 @@ namespace Thalus.Iqt.Core
 
         }
 
-        public IResult CompareIdentity(IIqtIdentityDTO expected, IIqtIdentityDTO current)
+        public IResult CompareIdentity(IIqtIdentity expected, IIqtIdentity current)
         {
             IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
 
@@ -27,7 +29,7 @@ namespace Thalus.Iqt.Core
 
         }
 
-        public IResult CompareIdentitySet(IIqtIdentitySetDTO expected, IIqtIdentitySetDTO current)
+        public IResult CompareIdentitySet(IIqtIdentitySet expected, IIqtIdentitySet current)
         {
 
             IqtIdentityResultSetDTO set = new IqtIdentityResultSetDTO();
@@ -37,9 +39,9 @@ namespace Thalus.Iqt.Core
             return GetResult(set);
         }
 
-        private void CompareIdentities(IIqtIdentityDTO[] expected, IIqtIdentityDTO[] current, IIqtIdentityResultSetDTO set)
+        private void CompareIdentities(IIqtIdentity[] expected, IIqtIdentity[] current, IIqtIdentityResultSet set)
         {
-            List<IIqtIdentityDTO> idents = new List<IIqtIdentityDTO>(current);
+            List<IIqtIdentity> idents = new List<IIqtIdentity>(current);
             foreach (var item in expected)
             {
                 var k = current.FirstOrDefault(i => i.FullName == item.FullName);
@@ -76,7 +78,7 @@ namespace Thalus.Iqt.Core
             return set.ExcludedButNotThere.Any() || set.ExpectedButNotThere.Any() || set.ThereButExcluded.Any() || set.ThereButNotExpected.Any() || set.ThereButWrongHash.Any();
         }
 
-        private void CompareIdentity(IIqtIdentityDTO expected, IIqtIdentityDTO current, IIqtIdentityResultSetDTO set)
+        private void CompareIdentity(IIqtIdentity expected, IIqtIdentity current, IIqtIdentityResultSet set)
         {
             if (expected.Excluded && !current.Excluded)
             {

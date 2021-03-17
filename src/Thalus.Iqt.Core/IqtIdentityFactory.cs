@@ -1,4 +1,5 @@
 ﻿using Thalus.Iqt.Core.Contracts;
+using Thalus.Iqt.Core.Contracts.DTO;
 
 namespace Thalus.Iqt.Core
 {
@@ -11,7 +12,7 @@ namespace Thalus.Iqt.Core
             _hash = hash;
         }
 
-        public IqtIdentityDTO Create(IFileInfo fi, IFileVersionInfo fvi)
+        public IIqtIdentity Create(IFileInfo fi, IFileVersionInfo fvi)
         {
             var qualifiedName = CreateQualifiedNameFrom(fi, fvi);
             var hash = _hash.CreateHash(qualifiedName);
@@ -24,7 +25,7 @@ namespace Thalus.Iqt.Core
             };
         }
 
-        public IqtIdentityDTO Create(IDirectoryInfo di, bool includeDirectoryCreationTime)
+        public IIqtIdentity Create(IDirectoryInfo di, bool includeDirectoryCreationTime)
         {
             string qualifiedName = includeDirectoryCreationTime ? $"{di.FullName}_{di.CreationTimeUtc}" : $"{di.FullName}";
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace Thalus.Iqt.Core
+namespace Thalus.Iqt.Core.Contracts.DTO
 {
 
-    public class IqtExcludesDTO : IIqtExcludesDTO
+    public class IqtExcludesDTO : IIqtExcludes
     {
         public IEnumerable<string> Files { get; set; }
 

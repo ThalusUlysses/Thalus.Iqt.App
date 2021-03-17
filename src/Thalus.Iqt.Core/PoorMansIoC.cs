@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Thalus.Contracts;
+using Thalus.Iqt.Core.Contracts;
 
 namespace Thalus.Iqt.Core
 {

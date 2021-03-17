@@ -1,6 +1,6 @@
-﻿namespace Thalus.Iqt.Core
+﻿namespace Thalus.Iqt.Core.Contracts.DTO
 {
-    public class IqtIdentityDTO : IIqtIdentityDTO
+    public class IqtIdentityDTO : IIqtIdentity
     {
         public string QualifiedName { get; set; }
 

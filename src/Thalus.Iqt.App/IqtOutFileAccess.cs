@@ -2,6 +2,7 @@
 using System.IO;
 using Thalus.Contracts;
 using Thalus.Iqt.Core;
+using Thalus.Iqt.Core.Contracts.DTO;
 
 namespace Thalus.Iqt.App
 {

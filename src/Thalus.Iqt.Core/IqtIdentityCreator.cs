@@ -18,16 +18,16 @@ namespace Thalus.Iqt.Core
             _iqtFactory = fact;
         }
 
-        public IqtIdentityDTO[] CreateFrom(IIqtExcludesDTO excludes = null, params string[] directories)
+        public IIqtIdentity[] CreateFrom(IIqtExcludes excludes = null, params string[] directories)
         {
-            List<IqtIdentityDTO> identities = new List<IqtIdentityDTO>();
+            List<IIqtIdentity> identities = new List<IIqtIdentity>();
 
             RecursiveDirectoryWalker(directories, identities, excludes);
 
             return identities.ToArray();
         }
 
-        bool ExcludeFile(IFileInfo filename, IIqtExcludesDTO ex)
+        bool ExcludeFile(IFileInfo filename, IIqtExcludes ex)
         {
             if (ex?.FileEndings != null && ex.FileEndings.Any(i => i.Equals(filename.Extension, StringComparison.InvariantCultureIgnoreCase)))
             {
@@ -53,7 +53,7 @@ namespace Thalus.Iqt.Core
             return false;
         }
 
-        bool ExcludeDirectory(IDirectoryInfo filename, IIqtExcludesDTO ex)
+        bool ExcludeDirectory(IDirectoryInfo filename, IIqtExcludes ex)
         {
 
             if (ex?.DirectoryNamePatterns != null)
@@ -75,7 +75,7 @@ namespace Thalus.Iqt.Core
             return false;
         }
 
-        private void RecursiveDirectoryWalker(string[] dirNames, List<IqtIdentityDTO> identities, IIqtExcludesDTO ex)
+        private void RecursiveDirectoryWalker(string[] dirNames, List<IIqtIdentity> identities, IIqtExcludes ex)
         {
             foreach (var dirName in dirNames)
             {
@@ -87,7 +87,7 @@ namespace Thalus.Iqt.Core
             }
         }
 
-        private void InspectFiles(string[] files, List<IqtIdentityDTO> identities, IIqtExcludesDTO ex)
+        private void InspectFiles(string[] files, List<IIqtIdentity> identities, IIqtExcludes ex)
         {
             foreach (var item in files)
             {
@@ -102,7 +102,7 @@ namespace Thalus.Iqt.Core
             }
         }
 
-        private void InspectFolder(string folder, List<IqtIdentityDTO> identities, IIqtExcludesDTO ex)
+        private void InspectFolder(string folder, List<IIqtIdentity> identities, IIqtExcludes ex)
         {
             var di = _access.GetDirectoryInfoFor(folder);
 
