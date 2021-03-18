@@ -126,6 +126,14 @@ namespace Thalus.Iqt.App
         {
             try
             {
+                var result = options.IsDataConsistent();
+
+                if (!result.Success)
+                {
+                    SetResultAndExitCode(result);
+                    return;
+                }
+
                 IPoorMansIoC ioc = new IqtIoc();
 
                 var rCreator = ioc.Get<IIqtIdentityCreator>().ThrowIfException();
@@ -139,7 +147,7 @@ namespace Thalus.Iqt.App
 
                 var set = new IqtIdentitySetDTO { Excludes = excludes, Identities = current };
 
-                var result = access.Write(set, options.OutFile, options.Force);
+                result = access.Write(set, options.OutFile, options.Force);
 
                 if (result.Success)
                 {
@@ -159,9 +167,18 @@ namespace Thalus.Iqt.App
         {
             try
             {
+                // Pre-flight check result
+                var result = options.IsDataConsistent();
+
+                if (!result.Success)
+                {
+                    SetResultAndExitCode(result);
+                    return;
+                }
+
                 IqtOutFileAccess a = new IqtOutFileAccess();
 
-                var result = a.Read(options.ReferenceFile);
+                 result = a.Read(options.ReferenceFile);
 
                 if (!result.Success)
                 {

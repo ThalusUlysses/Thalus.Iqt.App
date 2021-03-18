@@ -1,5 +1,8 @@
 ﻿using CommandLine;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Thalus.Contracts;
 
 namespace Thalus.Iqt.App
 {
@@ -36,5 +39,38 @@ namespace Thalus.Iqt.App
 
         [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
+
+        public IResult IsDataConsistent()
+        {
+            if (string.IsNullOrEmpty(OutFile))
+            {
+                return Result.Fail(400, $"Parameter --output not set. Parameter is mandatory but is null or empty");
+            }
+
+            if (File.Exists(OutFile) && !Force)
+            {
+                return Result.Fail(400, $"Parameter --output is set but file already exists. Either delet the file or use parameter --force");
+            }
+
+            if (Directories == null)
+            {
+                return Result.Fail(400, $"Parameter --driectory not set. Parameter is mandatory but is null");
+            }
+
+            if (!Directories.Any())
+            {
+                return Result.Fail(400, $"Parameter --driectory not set. Parameter is mandatory but list ist empty");
+            }
+
+            foreach (var item in Directories)
+            {
+                if (!Directory.Exists(item))
+                {
+                    return Result.Fail(404, $"Parameter --directory is see, but directory {item} does not exits");
+                }
+            }
+
+            return Result.Ok();
+        }
     }
 }

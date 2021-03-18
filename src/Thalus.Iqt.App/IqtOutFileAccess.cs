@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using Thalus.Contracts;
+using Thalus.Iqt.App.Json;
 using Thalus.Iqt.Core;
 using Thalus.Iqt.Core.Contracts.DTO;
 
@@ -59,7 +60,7 @@ namespace Thalus.Iqt.App
 
             var txt = File.ReadAllText(fileName);
 
-            var obj = JsonConvert.DeserializeObject<IqtIdentitySetDTO>(txt);
+            var obj = JsonConvert.DeserializeObject<IqtIdentitySetDTO>(txt, new IIqtIdentityConverter(), new IIqtExcludesConverter());
 
             return Result.Ok(data: obj);
         }
